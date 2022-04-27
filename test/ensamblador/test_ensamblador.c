@@ -144,7 +144,7 @@ static void minusculaEnLugar_debe_pasar_a_minuscula_una_cadena(void)
 static void minusculaEnLugar_debe_respetar_la_longitud_maxima(void)
 {
     char cadena[] = "CADENA123";
-    const char esperado[]="cadena123";
-    minusculaEnLugar(cadena,sizeof(cadena));
+    const char esperado[]="cadENA123";
+    minusculaEnLugar(cadena,3);
     TEST_ASSERT_EQUAL_CHAR_ARRAY(esperado,cadena,sizeof(esperado));
 }
