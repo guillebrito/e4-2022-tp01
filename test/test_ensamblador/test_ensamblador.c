@@ -2,6 +2,9 @@
 #include <unity.h>
 #include <timer_systick.h>
 
+void setUp(void){}
+void tearDown(void){}
+
 static void copiaMemoria_debe_copiar_cero_bytes(void);
 static void copiaMemoria_debe_copiar_un_byte(void);
 static void copiaMemoria_debe_copiar_media_palabra(void);
