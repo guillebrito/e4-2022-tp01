@@ -22,7 +22,11 @@
 defun copiaMemoria
     // Implementación aquí
     // R0: origen, R1: destino, R2: longitud
-    bx lr
+    cmp R2,#0
+    beq 0f 
+    ldrb R3,[R0]
+    strb R3,[R1]
+0:    bx lr
 endfun copiaMemoria
 
 defun copiaCadena
