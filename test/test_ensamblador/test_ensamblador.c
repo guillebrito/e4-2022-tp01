@@ -30,7 +30,7 @@ int main(void)
     RUN_TEST(copiaMemoria_debe_copiar_un_byte);
     RUN_TEST(copiaMemoria_debe_copiar_media_palabra);
     RUN_TEST(copiaMemoria_debe_copiar_una_palabra);
-    // RUN_TEST(copiaMemoria_debe_copiar_una_palabra_mal_alineada);
+    RUN_TEST(copiaMemoria_debe_copiar_una_palabra_mal_alineada);
     
     // RUN_TEST(copiaCadena_debe_copiar_una_cadena);
     // RUN_TEST(copiaCadena_debe_respetar_el_espacio_de_destino);
