@@ -57,25 +57,39 @@ defun mayusculaEnLugar
     // R0: cadena, R1: longitudMaxima
     cmp R1,#0
     beq 0f 
-    movs R12,#0
+    movs R2,#0
 1:  
     ldrb R3,[R0]
-    cmp  R3,0x60
-    bcc  2f
+    cmp  R3,0x60                //A partir de este valor vienen las minusculas, antes mayus y numeros
+    bcc  2f                     //Si R3>0x60 resto 0x20 para obtener su mayuscula
     subs R3,0x20
 2:  strb R3,[R0],#1
     cmp  R3,#0
     beq  0f
-    adds R12,#1
-    cmp  R1,R12
+    adds R2,#1
+    cmp  R1,R2
     bne 1b
-    movs R3,#0
-    strb R3,[R0,#-1]
 0:  bx lr
 endfun mayusculaEnLugar
 
 defun minusculaEnLugar
     // Implementación aquí
     // R0: cadena, R1: longitudMaxima
-    bx lr
+    cmp R1,#0
+    beq 0f 
+    movs R2,#0
+1:  
+    ldrb R3,[R0]
+    cmp  R3,0x60                //A partir de este valor vienen las minusculas, antes mayus y numeros
+    bhi  2f                     //Si 0x40<R3<0x60 sumo 0x20 para obtener su minuscula
+    cmp  R3,0x40                //compruebo si es un numero, si lo es salto
+    bcc  2f              
+    adds R3,0x20
+2:  strb R3,[R0],#1
+    cmp  R3,#0
+    beq  0f
+    adds R2,#1
+    cmp  R1,R2
+    bne 1b
+0:  bx lr
 endfun minusculaEnLugar
