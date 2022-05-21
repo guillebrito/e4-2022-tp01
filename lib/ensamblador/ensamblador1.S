@@ -45,9 +45,8 @@ defun copiaCadena
     adds R12,#1
     cmp  R2,R12
     bne 1b
-0:  subs R1,#1
-    movs R3,#0
-    strb R3,[R1]
+0:  movs R3,#0
+    strb R3,[R1,#-1]
     bx lr
 endfun copiaCadena
 
