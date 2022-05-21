@@ -45,15 +45,33 @@ defun copiaCadena
     adds R12,#1
     cmp  R2,R12
     bne 1b
-0:  movs R3,#0
+    movs R3,#0
     strb R3,[R1,#-1]
-    bx lr
+0:  bx lr
 endfun copiaCadena
+
+
 
 defun mayusculaEnLugar
     // Implementación aquí
     // R0: cadena, R1: longitudMaxima
-    bx lr
+    cmp R1,#0
+    beq 0f 
+    movs R12,#0
+1:  
+    ldrb R3,[R0]
+    cmp  R3,0x60
+    bcc  2f
+    subs R3,0x20
+2:  strb R3,[R0],#1
+    cmp  R3,#0
+    beq  0f
+    adds R12,#1
+    cmp  R1,R12
+    bne 1b
+    movs R3,#0
+    strb R3,[R0,#-1]
+0:  bx lr
 endfun mayusculaEnLugar
 
 defun minusculaEnLugar

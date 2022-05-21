@@ -35,7 +35,7 @@ int main(void)
     RUN_TEST(copiaCadena_debe_copiar_una_cadena);
     RUN_TEST(copiaCadena_debe_respetar_el_espacio_de_destino);
     
-    // RUN_TEST(mayusculaEnLugar_debe_pasar_a_mayuscula_una_cadena);
+    RUN_TEST(mayusculaEnLugar_debe_pasar_a_mayuscula_una_cadena);
     // RUN_TEST(mayusculaEnLugar_debe_respetar_la_longitud_maxima);
     
     // RUN_TEST(minusculaEnLugar_debe_pasar_a_minuscula_una_cadena);
