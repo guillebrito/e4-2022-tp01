@@ -42,9 +42,13 @@ defun copiaCadena
     strb R3,[R1],#1
     cmp  R3,#0
     beq  0f
+    adds R12,#1
     cmp  R2,R12
     bne 1b
-0:  bx lr
+0:  subs R1,#1
+    movs R3,#0
+    strb R3,[R1]
+    bx lr
 endfun copiaCadena
 
 defun mayusculaEnLugar
