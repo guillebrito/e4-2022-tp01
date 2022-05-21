@@ -71,7 +71,6 @@ static void copiaMemoria_debe_copiar_media_palabra(void)
     const uint8_t origen[4] = {XA,XA};
     const uint8_t esperado[4] = {XA,XA,XB,XB};
     uint8_t destino[4] = {XB,XB,XB,XB};
-
     copiaMemoria(origen,destino,2);
     TEST_ASSERT_EQUAL_MEMORY(esperado,destino,4);
 }

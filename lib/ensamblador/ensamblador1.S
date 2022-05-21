@@ -24,8 +24,10 @@ defun copiaMemoria
     // R0: origen, R1: destino, R2: longitud
     cmp R2,#0
     beq 0f 
-    ldrb R3,[R0]
-    strb R3,[R1]
+1:  subs R2,#1
+    ldrb R3,[R0,R2]
+    strb R3,[R1,R2]
+    bne 1b
 0:    bx lr
 endfun copiaMemoria
 
