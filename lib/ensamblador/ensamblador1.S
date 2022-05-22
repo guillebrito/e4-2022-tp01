@@ -60,8 +60,10 @@ defun mayusculaEnLugar
     movs R2,#0
 1:  
     ldrb R3,[R0]
-    cmp  R3,0x60                //A partir de este valor vienen las minusculas, antes mayus y numeros
-    bcc  2f                     //Si R3>0x60 resto 0x20 para obtener su mayuscula
+    cmp  R3,0x60        // 60<minusculas<7B --> ubicacion de las min. en codigo ascii hexa
+    bls  2f             // resto 0x20 y obtengo la misma letra pero en mayus
+    cmp  R3,0x7B
+    bcs  2f
     subs R3,0x20
 2:  strb R3,[R0],#1
     cmp  R3,#0
@@ -80,10 +82,10 @@ defun minusculaEnLugar
     movs R2,#0
 1:  
     ldrb R3,[R0]
-    cmp  R3,0x60                //A partir de este valor vienen las minusculas, antes mayus y numeros
-    bhi  2f                     //Si 0x40<R3<0x60 sumo 0x20 para obtener su minuscula
-    cmp  R3,0x40                //compruebo si es un numero, si lo es salto
-    bcc  2f              
+    cmp  R3,0x5B                
+    bcs  2f             //Si 0x40<R3<0x5B --> ubicacion de las mayus en codigo ascii hexa
+    cmp  R3,0x40        //sumo 0x20 para obtener su minuscula
+    bls  2f              
     adds R3,0x20
 2:  strb R3,[R0],#1
     cmp  R3,#0
